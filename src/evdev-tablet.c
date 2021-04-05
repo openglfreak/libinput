@@ -676,6 +676,9 @@ tablet_smoothen_axes(const struct tablet_dispatch *tablet,
 	size_t count = tablet_history_size(tablet);
 	struct tablet_axes smooth = { 0 };
 
+	if (count < 2)
+		return;
+
 	for (i = 0; i < count; i++) {
 		const struct tablet_axes *a = tablet_history_get(tablet, i);
 
